@@ -58,3 +58,21 @@ bSort_aux [a] = [a]
 bSort_aux (a:b:abs)
     | (a <= b) = a : bSort_aux (b:abs)
     | otherwise = b : bSort_aux (a:abs)
+
+--3) SEMPRE QUEBRAR O PROBLEMA EM PROBLEMAS MENORES
+isSortedTree :: (Ord t) => Tree t -> Bool
+isSortedTree (Leaf n) = True
+isSortedTree (Node v tr1 tr2) = ((values tr1) `lessThan` v) && ((values tr2) `greaterThan` v) && (isSortedTree tr1) && (isSortedTree tr2)
+--isSortedTree (Node v tr1 tr2) = isSorted ((values tr1) ++ [v] ++ (values tr2))
+
+values :: (Ord t) => Tree t -> [t]
+values (Leaf v) = [v]
+values (Node v tr1 tr2) = (values tr1) ++ [v] ++ (values tr2)
+
+lessThan :: (Ord t) => [t] -> t -> Bool
+lessThan [] v = True
+lessThan (a:as) v = (a <= v) && (as `lessThan` v)
+
+greaterThan :: (Ord t) => [t] -> t -> Bool
+greaterThan [] v = True
+greaterThan (a:as) v = (a >= v) && (as `greaterThan` v)
