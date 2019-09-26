@@ -1,0 +1,4 @@
+-- getLine :: IO String lê uma string da tela
+-- getChar :: IO Char
+-- putStr :: String -> IO ()
+-- putStrLn :: String -> IO ()
