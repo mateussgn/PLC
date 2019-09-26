@@ -25,3 +25,10 @@ somaES =
         putStrLn "Entre o segundo numero"
         ys <- getLine
         putStrLn ("O resultado é: " ++ show((read xs) + (read ys)))
+
+main :: IO ()
+main =
+    putStrLn "Digite seu nome:" >>
+    getLine >>= \st ->
+        putStrLn "Ao contrario e: " >>
+        putStrLn (reverse st)
